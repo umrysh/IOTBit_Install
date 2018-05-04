@@ -24,12 +24,3 @@ sudo wvdialconf /etc/wvdial.conf
 sudo usermod -a -G /dev/ttyS0 pi
 echo $SPACING
 echo $SPACING
-
-# Final message before shutdown
-echo "Driver has been installed and the configuration files have been set."
-echo "After reboot, please run the DialSetup.sh bash script."
-echo "Rebooting in 60 seconds."
-sleep 1m
-echo "Rebooting"
-sleep 5
-sudo reboot
