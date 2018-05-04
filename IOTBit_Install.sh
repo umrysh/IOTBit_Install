@@ -6,7 +6,7 @@ apt-get install libncurses5-dev -y
 
 #Install rpi-source
 wget https://raw.githubusercontent.com/notro/rpi-source/master/rpi-source -O /usr/bin/rpi-source && sudo chmod +x /usr/bin/rpi-source && /usr/bin/rpi-source -q --tag-update
-rpi-source
+rpi-source --skip-gcc
 
 #Install gobi-serial dependancies
 apt-get install dkms -y
