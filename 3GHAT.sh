@@ -28,17 +28,19 @@ then
 fi
 
 # Checking if the HAT is ready to connect.
-Manufacturer='Qualcomm'
-DETECT_USB=sudo lsusb | grep $Manufacturer
-if ! [[ $DETECT_USB = *$Manufacturer* ]]
+Manufacturer="Qualcomm"
+DETECT_USB=$(sudo lsusb | grep $Manufacturer)
+if [[ $DETECT_USB = "" ]]
 then
   echo "3G HAT is not detected. Please reseat the HAT or change USB cables."
   echo $SPACING
   echo $SPACING
   exit 1
+else
+  sudo lsusb | grep $Manufacturer
+  echo "IOTBit Hat is Detected"
 fi
 
-echo "Script Works!"
 # # Changing permissions for driver package.
 # sudo chmod u+x IOTBit_Install.sh
 #
