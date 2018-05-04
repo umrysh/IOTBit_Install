@@ -11,16 +11,9 @@ fi
 echo $SPACING
 echo $SPACING
 echo "Driver has been installed properly! :)"
-echo "Proceeding to customize wvidal config files."
 echo $SPACING
-echo "What APN does your mobile carrier use? (Make sure it is used for data plans.)"
-read APN
-sudo sed -i .bak "s/YOUR.SIMCARD_APN.HERE/$APN/" *wvdial*
 sudo mv /etc/wvdial.conf /etc/wvdial.conf.bak
 sudo mv wvdial.conf /etc/wvdial.conf
 sudo wvdialconf /etc/wvdial.conf
-
-# Changing permissions for S0 serial port.
-sudo usermod -a -G /dev/ttyS0 pi
 echo $SPACING
 echo $SPACING
