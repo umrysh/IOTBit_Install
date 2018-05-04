@@ -39,28 +39,42 @@ then
 else
   sudo lsusb | grep $Manufacturer
   echo "IOTBit Hat is Detected"
+  # Checking if the HAT is ready to connect.
+Manufacturer="Qualcomm"
+DETECT_USB=$(sudo lsusb | grep $Manufacturer)
+if [[ $DETECT_USB = "" ]]
+then
+  echo "3G HAT is not detected. Please reseat the HAT or change USB cables."
+  echo $SPACING
+  echo $SPACING
+  exit 1
+else
+  sudo lsusb | grep $Manufacturer
+  echo "IOTBit Hat is Detected"
+  echo $SPACING
+  echo $SPACING
 fi
 
-# # Changing permissions for driver package.
-# sudo chmod u+x IOTBit_Install.sh
-#
-# # Installing the driver.
-# echo "Starting to Install Drivers"
-# echo "This will take about 10-30 minutes depending on network speeds."
-# sudo ./IOTBit_Install.sh
-#
-#
-# Driver=GobiSerial
-# DETECT_DRIVER=lsmod | grep $Driver
-# if [[ $DETECT_DRIVER = *$Driver* ]]
-# then
-#   echo "Driver has been installed properly! :)"
-#   echo "Proceeding to customize wvidal config files."
-#   echo $SPACING
-#   sudo mv wvdial.config wvdial.bak.config
-#   echo "What APN does your mobile carrier use? (Make sure it is used for data plans.)"
-#   read APN
-#   sudo sed -i .bak "s/YOUR.SIMCARD_APN.HERE/$APN/" *wvdial*
-#   sudo mv /etc/wvdial.conf /etc/wvdial.conf.bak
-#   sudo mv wvdial.conf /etc/wvdial.conf
-#   sudo
+# Changing permissions for driver package.
+sudo chmod u+x IOTBit_Install.sh
+
+# Installing the driver.
+echo "Starting to Install Drivers"
+echo "This will take about 10-30 minutes depending on network speeds."
+sudo ./IOTBit_Install.sh
+
+
+Driver=GobiSerial
+DETECT_DRIVER=$(lsmod | grep $Driver)
+if ! [[ $DETECT_DRIVER = "" ]]
+then
+  echo "Driver has been installed properly! :)"
+  echo "Proceeding to customize wvidal config files."
+  echo $SPACING
+  sudo mv wvdial.config wvdial.bak.config
+  echo "What APN does your mobile carrier use? (Make sure it is used for data plans.)"
+  read APN
+  sudo sed -i .bak "s/YOUR.SIMCARD_APN.HERE/$APN/" *wvdial*
+  sudo mv /etc/wvdial.conf /etc/wvdial.conf.bak
+  sudo mv wvdial.conf /etc/wvdial.conf
+  sudo wvdialconf /etc/wvdial.conf
