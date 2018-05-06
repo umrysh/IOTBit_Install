@@ -7,7 +7,7 @@ then
   exit 1
 fi
 
-#Editing WVDIAL Configuration Files
+# Editing WVDIAL Configuration Files
 echo $SPACING
 echo $SPACING
 echo "Driver has been installed properly! :)"
@@ -17,3 +17,7 @@ sudo mv wvdial.conf /etc/wvdial.conf
 sudo wvdialconf /etc/wvdial.conf
 echo $SPACING
 echo $SPACING
+
+# Changing Serial Port Zero Permissions
+echo "Changing Serial Port Zero Permissions"
+sudo chmod u+x /dev/ttyS0
