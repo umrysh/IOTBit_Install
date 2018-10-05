@@ -1,3 +1,4 @@
+#!/bin/bash
 Driver=GobiSerial
 DETECT_DRIVER=$(lsmod | grep $Driver)
 if [[ $DETECT_DRIVER = "" ]]
