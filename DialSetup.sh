@@ -14,7 +14,7 @@ echo $SPACING
 echo "Driver has been installed properly! :)"
 echo $SPACING
 sudo mv /etc/wvdial.conf /etc/wvdial.conf.bak
-sudo mv wvdial.conf /etc/wvdial.conf
+sudo cp wvdial.conf /etc/wvdial.conf
 sudo wvdialconf /etc/wvdial.conf
 echo $SPACING
 echo $SPACING
