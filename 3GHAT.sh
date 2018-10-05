@@ -28,7 +28,7 @@ then
 fi
 
 # Checking if the HAT is ready to connect.
-Manufacturer="Qualcomm"
+Manufacturer="MediaTek"
 DETECT_USB=$(sudo lsusb | grep $Manufacturer)
 if [[ $DETECT_USB = "" ]]
 then
