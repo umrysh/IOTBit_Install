@@ -21,4 +21,4 @@ echo $SPACING
 
 # Changing Serial Port Zero Permissions
 echo "Changing Serial Port Zero Permissions"
-sudo chmod u+x /dev/ttyS0
+sudo chmod u+x /dev/ttyAMA0
